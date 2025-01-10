@@ -15,7 +15,7 @@ restart_rivalz() {
     fi
 
     # 启动新的 screen 会话
-    screen -dmS "$SCREEN_NAME" bash -c "rivalz run;"
+    screen -dmS "$SCREEN_NAME" bash -c "rivalz run; exec bash"
     echo "$(date): Screen $SCREEN_NAME started." >> "$LOG_FILE"
 }
 
