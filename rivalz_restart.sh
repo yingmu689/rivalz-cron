@@ -24,9 +24,13 @@ setup_cron() {
     echo "Configuring cron job..."
     # 获取当前脚本的完整路径
     SCRIPT_PATH=$(realpath "$0")
-    # 将任务添加到 cron
-    (crontab -l 2>/dev/null; echo "0 2 * * * bash $SCRIPT_PATH restart") | crontab -
-    echo "Cron job added: runs daily at 2:00 AM."
+    # 清空所有原有任务
+    echo "" | crontab -
+    echo "Existing cron jobs cleared."
+    
+    # 添加新的任务：每小时的第10分钟运行
+    echo "10 * * * * bash $SCRIPT_PATH restart" | crontab -
+    echo "Cron job added: runs every hour at the 10th minute."
 }
 
 # 主逻辑
