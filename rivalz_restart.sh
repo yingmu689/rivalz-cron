@@ -39,6 +39,7 @@ if [[ "$1" == "restart" ]]; then
     restart_rivalz
 else
     # 配置 cron 并测试重启逻辑
+    fix 脚本
     setup_cron
     echo "Testing restart function..."
     restart_rivalz
